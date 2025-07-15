@@ -44,6 +44,19 @@ const mailOptions = {
   }
 });
 
+app.get('/', (_req, res) => {
+  res.send('API is working');
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
+});
+
+const path = require('path');
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
