@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+app.use(cors('https://lipuportfolio.netlify.app/'));
 app.use(express.json());
 
 app.post("/contact", async (req, res) => {

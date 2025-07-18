@@ -136,7 +136,7 @@ async function submitForm(event) {
     }
 
     try {
-        const response = await fetch('http://localhost:4000/contact', {
+        const response = await fetch('https://porfolio-7xzm.onrender.com/contact', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
