@@ -22,12 +22,19 @@ app.post("/contact", async (req, res) => {
       },
     });
 
-    await transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL_USER,
-      subject: `New contact from ${name}`,
-      text: message,
-    });
+  await transporter.sendMail({
+  from: process.env.EMAIL_USER,     // Required by Gmail
+  to: process.env.EMAIL_USER,       // Your inbox
+  replyTo: email,                   // Lets you reply directly to the user
+  subject: `New contact from ${name}`,
+  text: `You have a new message from your portfolio site:
+
+Name: ${name}
+Email: ${email}
+Message:
+${message}`,
+});
+
 
     res.json({ success: true });
   } catch (err) {
